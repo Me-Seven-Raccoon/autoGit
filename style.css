@@ -1,0 +1,81 @@
+
+body {
+    background-color: rgb(11, 243, 243);
+}
+.conteiner_search {
+    width: 200px;
+    margin-top: 2px;
+    position: absolute;
+}
+.conteiner-list {
+    margin-top: 200px;
+}
+
+h5 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.name {
+    padding: 2px 0;
+    border: 1px solid black;
+    background-color: seashell;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+.contElement {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    background-color: pink;
+    max-width: 320px;
+}
+
+.name:hover {
+    background-color: rgb(155, 149, 241);
+}
+
+.buttonDel {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
+    margin-top: 6px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.buttonDel:before {
+    content: '+';
+    color: #337AB7;
+    position: absolute;
+    z-index: 2;
+    transform: rotate(45deg);
+    font-size: 50px;
+    line-height: 1;
+    top: -6px;
+    left: 4px;
+}
+.buttonDel:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: #337AB7;
+    z-index: 1;
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+    transform: scale(0.01);
+}
+.buttonDel:hover:after {
+    transform: scale(1);
+}
+.buttonDel:hover:before {
+    transform: scale(0.8) rotate(45deg);
+    color: #fff;
+}
