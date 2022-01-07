@@ -1,9 +1,11 @@
 const inputText = document.querySelector('.inputText');
 const buttonSearch = document.querySelector('.search');
-const conteinerSearch = document.querySelector('.conteiner_search');
 const conteinerList = document.querySelector('.conteiner-list');
 const conteinerName = document.querySelector('.name');
 const buttonDele = document.querySelector('.buttonDel');
+const conteiner = document.querySelector('.conteiner')
+// const conteinerSearch = document.querySelector('.conteiner_search');
+
 
 function getPost(text){
     return fetch(`https://api.github.com/search/repositories?q=${text}`)
@@ -19,6 +21,7 @@ function elRedactName(el){
 }
 
 function elRedactAll(el){
+    console.log('ss')
     const contElement = document.createElement('div');
     contElement.classList.add('contElement');
     const buttonDelete = document.createElement('button');
@@ -53,6 +56,7 @@ function result(){
 // inputText.addEventListener('keyup', run => {
     let text = inputText.value;
     getPost(text).then(content => {
+        conteinerSearch = createConteinerSeach()
         const newArr = content.items
         const elArr = [];
         for(let i = 0; i < newArr.length; i++){
@@ -66,6 +70,7 @@ function result(){
             if(e.target.classList.contains('name')){
                 for(let i = 0; i < elArr.length; i++){
                     if(e.target.id == elArr[i].id){
+                        console.log(e.target.id)
                         const elInfo = elRedactAll(elArr[i])
                         conteinerList.appendChild(elInfo)
                     }
@@ -80,10 +85,20 @@ function result(){
             }
         })
     })
-// }) 
 }
 let run = debounce(result, 1000)
 inputText.addEventListener('keyup', run)
+
+function createConteinerSeach (){
+    var conteinerSearch = document.querySelector('.conteiner_search');
+    if (conteinerSearch !== null){
+        conteiner.removeChild(conteinerSearch)
+    }
+    conteinerSearch = document.createElement('div');
+    conteinerSearch.classList.add('conteiner_search');
+    conteiner.appendChild(conteinerSearch)
+    return document.querySelector('.conteiner_search')
+}
 
 
 
